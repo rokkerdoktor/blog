@@ -86,12 +86,11 @@
             </div>
         </div>
 
+
         <div class="flex-center position-ref ">
         <div class="content">
-                <div class="title m-b-md">
-             Termékek
-                </div>
-
+        @include('kosar')
+         
                 <div class="links">
                 
                     @foreach($termek as $termek)

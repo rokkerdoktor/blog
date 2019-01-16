@@ -16,6 +16,7 @@ class Kosar extends Migration
          Schema::create('kosar', function (Blueprint $table) {
             $table->increments('id');
             $table->string('amount');
+            $table->string('ip');
             $table->timestamps();
         });
     }

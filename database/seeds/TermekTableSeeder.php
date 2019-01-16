@@ -15,7 +15,6 @@ class TermekTableSeeder extends Seeder
         DB::table('Termek')->insert(
             [
                 'name' => $faker->sentence,
-                'amount' => $faker->unique()->randomNumber($nbDigits = 2),
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ]
