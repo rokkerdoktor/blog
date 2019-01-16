@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('add', 'Work@add');
+Route::post('add', 'Work@add');
+Route::post('update', 'Work@update');
 Route::get('remove/{id}', 'Work@remove');
 Route::get('list', 'Work@list');

@@ -25,8 +25,7 @@ public function list(Request $request){
         $validator=Validator::make($request->all(),
         [
             'id' => 'required',
-            'cucc' => 'required',
-            'ip' => 'required'
+            'cucc' => 'required'
         ]);
 
         if($validator->fails())
@@ -35,8 +34,7 @@ public function list(Request $request){
         }
 
         $clientIP = request()->ip();
-        $kosar=new Kosar;
-        $kosar->id=$request->id;
+        $kosar = Kosar::firstOrNew(array('id' => $request->id));
         $kosar->amount=$request->cucc;
         $kosar->ip=$clientIP;
         $kosar->save();
@@ -51,4 +49,12 @@ public function list(Request $request){
         return Response::json(['data' => 'success'],200);
     }
     
+    public function update(Request $request)
+    {
+
+        $update = Kosar::find($request->id);
+        $update->amount = $request->ertek;
+        $update->save();
+        return 'Updated';
+    }
 }

@@ -14,7 +14,21 @@ class index extends Controller
     {
         $kosar = file_get_contents("http://localhost/blog/api/list");   
         $json = json_decode($kosar, true);
-        return view('index', ['termek' => Termek::all(),'kosar' => $json]);
+
+
+        foreach($json as $json2)
+        {
+            $count=0;
+            foreach($json2 as $json4)
+            {
+                $object[$count] = Termek::find($json4["id"]);
+                $object[$count]["qty"]=$json4["amount"];
+                $count++;
+            }
+        }
+   
+
+        return view('index', ['termek' => Termek::all(),'kosar' => $object]);
     }
 
 }

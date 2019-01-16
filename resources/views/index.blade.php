@@ -99,12 +99,14 @@
             {
                 $( "#doit{{$termek->id}}" ).click(function() {
                 var cucc = $("#qty{{$termek->id}}").val();     
+                var id = $("#id{{$termek->id}}").val();      
                 $.ajax({
-               type:'GET',
-               url:'api/add/{{$termek->id}}',
-               data: {cucc:cucc},
+               type:'post',
+               url:'api/add',
+               data: {cucc:cucc , id:id},
                success:function(data) {
-                   alert(data);
+                $("#kosaram").load(location.href + " #kosaram");
+                $("#bezar").click();
                }
             });
         });
@@ -121,10 +123,11 @@
 </div>
 </div>
 <div id="{{$termek->id}}" class="modal">
+<input type="hidden" id="id{{$termek->id}}" value="{{$termek->id}}">
 <label>QTY: </label><input type="number" id="qty{{$termek->id}}">
 <button class="btn btn-primary" id="doit{{$termek->id}}">Kosárba</button>
 <br>
-  <a href="#" rel="modal:close">Bezár</a>
+  <a href="#" id="bezar" rel="modal:close">Bezár</a>
 </div>
 
                     @endforeach
