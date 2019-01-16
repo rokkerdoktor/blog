@@ -26,7 +26,9 @@ class index extends Controller
                 $count++;
             }
         }
-   
+        if(empty($object)){ 
+           $object="Your cart is empty";
+        }
 
         return view('index', ['termek' => Termek::all(),'kosar' => $object]);
     }

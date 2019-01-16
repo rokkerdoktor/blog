@@ -1,11 +1,15 @@
 <style>
 .torles {color:red; cursor:pointer;}
 </style>
+@if($kosar=="Your cart is empty")
+Ures a kosarad!
+@else
 <table id="kosaram">
 <tr>
 <td>name</td>
 <td>qty</td>
 <td>delete</td></tr>
+
 
 
 @foreach($kosar as $kosar)
@@ -51,7 +55,7 @@
 
         </script>
 @endforeach
-
+@endif
 </table>
 
 
